@@ -107,6 +107,12 @@ struct EnterMailView: View {
                 }
                 .disabled(loginViewModel.isLoading)
                 
+                if let errorMessage = loginViewModel.errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .padding(.bottom)
+                }
+                
                 HStack{
                     Text("Нет аккаунта?")
                         .foregroundColor(.gray)
