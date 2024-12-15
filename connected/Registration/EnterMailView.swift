@@ -86,18 +86,26 @@ struct EnterMailView: View {
                     }
                 }
                 
-                Button(action :{
-                    loginViewModel.isLogin = true
-                }){
-                    Text("Войти")
-                        .foregroundColor(.lightgray)
-                        .fontWeight(.medium)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(LinearGradient(colors: [.dark, .bg], startPoint: .topTrailing, endPoint: .bottomLeading))
-                        .cornerRadius(12)
+                Button(action: {
+                    loginViewModel.login(email: usermail, password: userpassword)
+                }) {
+                    if loginViewModel.isLoading {
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(LinearGradient(colors: [.dark, .bg], startPoint: .topTrailing, endPoint: .bottomLeading))
+                            .cornerRadius(12)
+                    } else {
+                        Text("Войти")
+                            .foregroundColor(.lightgray)
+                            .fontWeight(.medium)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(LinearGradient(colors: [.dark, .bg], startPoint: .topTrailing, endPoint: .bottomLeading))
+                            .cornerRadius(12)
+                    }
                 }
-                
+                .disabled(loginViewModel.isLoading)
                 
                 HStack{
                     Text("Нет аккаунта?")
