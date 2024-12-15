@@ -10,9 +10,12 @@ import SwiftUI
 struct RegistView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var loginViewModel : LoginViewModel
     
     @State var usermail = ""
     @State var userpassword = ""
+    
+    let fbManager = LoginViewModel()
     
     var body: some View {
         ZStack{
@@ -81,7 +84,9 @@ struct RegistView: View {
                 }
                 
                 Button(action :{
-        //            loginViewModel.isLogin = true
+                    fbManager.registNewUser(user :UserData(email: usermail, password: userpassword))
+                    
+                    loginViewModel.isLogin = true
                 }){
                     Text("Зарегистрироваться")
                         .foregroundColor(.lightgray)
