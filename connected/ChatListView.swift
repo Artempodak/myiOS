@@ -8,8 +8,35 @@
 import SwiftUI
 
 struct ChatListView: View {
+    
+    
+    @State private var searchUser = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            LinearGradient(colors: [.bg, .dark], startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            
+
+            
+            VStack{
+                HStack{
+                    Image(systemName: "magnifyingglass")
+                    TextField("Поиск", text: $searchUser)
+                }
+                .padding(8)
+                .background(Color.white.opacity(0.2))
+                .clipShape(Capsule())
+                .padding()
+                
+                
+                
+                Spacer()
+                
+                
+            }
+            
+        }
     }
 }
 
