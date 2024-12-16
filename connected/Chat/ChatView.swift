@@ -37,7 +37,6 @@ struct ChatView: View {
                     .padding()
                 }
                 
-                Divider()
                 
                 VStack(spacing: 8) {
                     ScrollView(.horizontal, showsIndicators: false) {
