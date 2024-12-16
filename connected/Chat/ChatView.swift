@@ -40,6 +40,16 @@ struct ChatView: View {
                 Divider()
                 
                 VStack(spacing: 8) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(viewModel.selectedImages, id: \.self) { image in
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                            }
+                        }
+                    }
                     
                     HStack {
                         
@@ -51,6 +61,8 @@ struct ChatView: View {
                                 .frame(width: 32, height: 32)
                                 .foregroundColor(.accent)
                         }
+                        
+
                         
                         TextField("Введите сообщение...", text: $viewModel.currentText)
                             .padding(7)
@@ -69,16 +81,6 @@ struct ChatView: View {
                         .disabled(viewModel.currentText.isEmpty && viewModel.selectedImages.isEmpty)
                     }
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(viewModel.selectedImages, id: \.self) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                            }
-                        }
-                    }
                 }
                 .padding()
                 .background(Color.bg)

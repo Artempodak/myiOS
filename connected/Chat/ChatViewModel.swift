@@ -10,6 +10,8 @@
 import SwiftUI
 
 class ChatViewModel: ObservableObject {
+    
+    
     @Published var messages: [Message] = [] // Список всех сообщений
     @Published var currentText: String = "" // Текущий текст сообщения
     @Published var selectedImages: [UIImage] = [] // Выбранные изображения
