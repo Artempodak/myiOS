@@ -17,8 +17,6 @@ struct ChatListView: View {
             LinearGradient(colors: [.bg, .dark], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
             
-
-            
             VStack{
                 HStack{
                     Image(systemName: "magnifyingglass")
