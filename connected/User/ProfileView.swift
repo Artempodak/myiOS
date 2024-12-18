@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ProfileView: View {
     
     @EnvironmentObject var loginViewModel : LoginViewModel
+    
+    // Получение текущего пользователя
+    var userEmail: String {
+        Auth.auth().currentUser?.email ?? "Неизвестно"
+    }
+    
+    @State private var isShowProfileSettings = false
+    
     
     var body: some View {
         NavigationView{
@@ -17,24 +26,31 @@ struct ProfileView: View {
                 LinearGradient(colors: [.gray, .bg], startPoint: .topLeading, endPoint: .bottomTrailing)
                     .ignoresSafeArea()
                 VStack{
-                    HStack{
-                        Circle()
-                            .frame(width: 40)
-                        VStack(alignment: .leading){
-                            Text("UserName")
-                                .foregroundColor(.lightgray)
-                            Text("UserMail")
-                                .font(.callout)
-                                .foregroundColor(.lightgray)
+                    Button(action:{
+                        isShowProfileSettings.toggle()
+                    }){
+                        HStack{
+                            Circle()
+                                .frame(width: 40)
+                            VStack(alignment: .leading){
+                                Text("UserName")
+                                    .foregroundColor(.lightgray)
+                                Text(userEmail)
+                                    .font(.callout)
+                                    .foregroundColor(.lightgray)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.accent)
                         }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(.accent)
+                        .padding()
+                        .background(Color.bg.opacity(0.4))
+                        .cornerRadius(12)
+                        .padding(.horizontal)
                     }
-                    .padding()
-                    .background(Color.bg.opacity(0.4))
-                    .cornerRadius(12)
-                    .padding(.horizontal)
+                    .sheet(isPresented: $isShowProfileSettings){
+                        ProgileSettingsView()
+                    }
                     
                     NavigationLink(destination: NotificationView()){
                         HStack{
