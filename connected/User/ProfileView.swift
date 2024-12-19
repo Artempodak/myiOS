@@ -10,6 +10,8 @@ import FirebaseAuth
 
 struct ProfileView: View {
     
+    @Binding var isTabBarHidden: Bool
+    
     @EnvironmentObject var loginViewModel : LoginViewModel
     
     // Получение текущего пользователя
@@ -156,8 +158,4 @@ struct ProfileView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-}
-
-#Preview {
-    ProfileView()
 }

@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ChatView: View {
     
+    @Binding var isTabBarHidden: Bool
     
     @StateObject private var viewModel = ChatViewModel()
     @State private var isPhotoPickerPresented = false
@@ -123,6 +124,3 @@ struct ChatView: View {
     }
 }
 
-#Preview {
-    ChatView()
-}

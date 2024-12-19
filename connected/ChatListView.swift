@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatListView: View {
-    
+    @Binding var isTabBarHidden: Bool
     
     @State private var searchUser = ""
     
@@ -38,6 +38,3 @@ struct ChatListView: View {
     }
 }
 
-#Preview {
-    ChatListView()
-}

@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-import SwiftUI
 
 struct CustomTabBarView: View {
     
     @State private var selectedTab: Tab = .profile
+    @State private var isTabBarHidden = false // Состояние для управления видимостью таббара
     
     var body: some View {
         ZStack{
@@ -20,25 +20,26 @@ struct CustomTabBarView: View {
                 // Основное содержимое вкладок
                 switch selectedTab {
                 case .listai:
-                    ChatListView()
+                    ChatListView(isTabBarHidden: $isTabBarHidden) // Передаем состояние скрытия таббара
                 case .chatai:
-                    ChatView()
+                    ChatView(isTabBarHidden: $isTabBarHidden) // Передаем состояние скрытия таббара
                 case .profile:
-                    ProfileView()
+                    ProfileView(isTabBarHidden: $isTabBarHidden) // Передаем состояние скрытия таббара
                 }
                 
-                Spacer()
-                
-                // Кастомный таббар
-                
-                HStack {
-                    ForEach(Tab.allCases, id: \.self) { tab in
-                        Spacer()
-                        TabBarItem(tab: tab, selectedTab: $selectedTab)
-                        Spacer()
+                if !isTabBarHidden {
+                    Spacer()
+                    
+                    // Кастомный таббар
+                    HStack {
+                        ForEach(Tab.allCases, id: \.self) { tab in
+                            Spacer()
+                            TabBarItem(tab: tab, selectedTab: $selectedTab)
+                            Spacer()
+                        }
                     }
+                    .background(Color.bg)
                 }
-                .background(Color.bg)
             }
         }
     }
@@ -81,13 +82,6 @@ struct TabBarItem: View {
         }
     }
 }
-
-struct ContentView: View {
-    var body: some View {
-        CustomTabBarView()
-    }
-}
-
 
 #Preview {
     CustomTabBarView()

@@ -30,7 +30,7 @@ struct ProgileSettingsView: View {
                             TextField("Введите новый email", text: $newEmail)
                                 .textInputAutocapitalization(.never)
                                 .autocorrectionDisabled()
-                                .padding()
+                                .padding(15)
                                 .background(Color.white.opacity(0.4))
                                 .cornerRadius(12)
                         } else {
