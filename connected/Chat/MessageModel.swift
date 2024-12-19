@@ -11,7 +11,8 @@ import UIKit
 
 struct Message: Identifiable {
     let id: UUID
-    let text: String // Текст сообщения
+    let text: String? // Текст сообщения
+    var audioURL: URL?// URL для голосового сообщения (если есть)
     let timestamp: Date // Время отправки
-    let images: [UIImage] // Список фотографий
+    let images: [UIImage]? // Список фотографий
 }

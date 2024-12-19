@@ -432,6 +432,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = connected/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Приложению необходимо разрешение на использование камеры для создания фотографий";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Приложению необходимо разрешение на использование микрофона";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -468,6 +469,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = connected/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Приложению необходимо разрешение на использование камеры для создания фотографий";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Приложению необходимо разрешение на использование микрофона";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

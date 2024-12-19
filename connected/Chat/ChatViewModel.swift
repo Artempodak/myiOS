@@ -16,6 +16,20 @@ class ChatViewModel: ObservableObject {
     @Published var currentText: String = "" // Текущий текст сообщения
     @Published var selectedImages: [UIImage] = [] // Выбранные изображения
 
+    // Отправка голосового сообщения
+    func sendVoiceMessage(audioURL: URL) {
+        let message = Message(
+            id: UUID(),
+            text: nil, // Для голосового сообщения текст пустой
+            audioURL: audioURL, // Добавляем URL голосового сообщения
+            timestamp: Date(),
+            images: nil
+        )
+        messages.append(message)
+    }
+
+    
+    
     func sendMessage() {
         let timestamp = Date()
 

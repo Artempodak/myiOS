@@ -4,27 +4,29 @@ struct MessageView: View {
     let message: Message
 
     var body: some View {
-        
-        HStack{
+        HStack {
             Spacer()
             VStack(alignment: .trailing, spacing: 8) {
                 
-                if !message.text.isEmpty {
-                    Text(message.text)
+                // Проверка для текстового сообщения
+                if let text = message.text, !text.isEmpty {
+                    Text(text)
                 }
                 
-                if !message.images.isEmpty {
-                        HStack {
-                            ForEach(message.images, id: \.self) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 210, height: 120)
-                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                            }
+                // Проверка для изображений
+                if let images = message.images, !images.isEmpty {
+                    HStack {
+                        ForEach(images, id: \.self) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 210, height: 120)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
                         }
+                    }
                 }
                 
+                // Отображение времени
                 Text(formatTimestamp(message.timestamp))
                     .font(.caption)
                     .foregroundColor(.white.opacity(0.7))
