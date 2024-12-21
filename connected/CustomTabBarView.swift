@@ -1,9 +1,8 @@
-//
+
+
+
 //  CustomTabBarView.swift
-//  connected
-//
-//  Created by Artem Podorozhniy on 13.12.2024.
-//
+
 
 import SwiftUI
 
